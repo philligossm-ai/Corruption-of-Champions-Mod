@@ -422,7 +422,17 @@ package classes.Scenes.Combat
 			return monster; //Fallback
 		}
 		
-		public function enemyTurn():void {
+		public function enemyTurn():void {//Time Stop: while the frozen moment holds, the enemy simply does not act.
+		if (player.hasStatusEffect(StatusEffects.TimeStop)) {
+			player.addStatusValue(StatusEffects.TimeStop, 1, -1);
+			if (player.statusEffectv1(StatusEffects.TimeStop) > 0) {
+				clearOutput();
+				outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.\n\n");
+				doNext(combatMenu, false);
+				return;
+			}
+			player.removeStatusEffect(StatusEffects.TimeStop);
+		}
 			if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI();
 			if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI();
 			if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI();
