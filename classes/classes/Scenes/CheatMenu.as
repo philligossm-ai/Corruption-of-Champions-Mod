@@ -2,6 +2,7 @@ package classes.Scenes {
 	import classes.*;
 	import classes.GlobalFlags.kFLAGS;
 	import classes.GlobalFlags.kGAMECLASS;
+	import classes.Scenes.NPCs.*;
 
 	/**
 	 * Private-build cheat console, reachable from the camp screen.
