@@ -22,7 +22,8 @@ package classes.Scenes {
 			campInitialize(doCamp); //pass the doCamp function up to CoC. This way doCamp is private but the CoC class itself can call it
 		}
 		public var cabinProgress:CabinProgress = new CabinProgress();
-		public var codex:Codex = new Codex();
+	public var codex:Codex = new Codex();
+	public var cheatMenu:CheatMenu = new CheatMenu();
 
 		public function returnToCamp(timeUsed:int):void {
 			clearOutput();
@@ -626,6 +627,7 @@ private function doCamp():void { //only called by playerMenu
 	if (getGame().time.hours >= 21 || getGame().time.hours < 6) addButton(9, "Sleep", doSleep).hint("Turn yourself in for the night.");
 	if (isAprilFools())
 		addButton(12, "Cash Shop", getGame().aprilFools.pay2WinSelection).hint("Need more gems? Want to buy special items to give you the edge? Purchase with real money!");
+	addButton(8, "Cheats", cheatMenu.accessCheatMenu).hint("Open the private-build cheat menu. \n\nAdd gems, jump levels, learn every spell, move the clock.");
 	//Remove buttons according to conditions
 	if (getGame().time.hours >= 21 || getGame().time.hours < 6) {
 		addDisabledButton(0, kGAMECLASS.output.getButtonText(0), "It's too dark outside. It wouldn't be a good idea to explore when danger lurks in every corner of darkness."); //Explore
