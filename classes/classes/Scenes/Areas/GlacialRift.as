@@ -44,7 +44,8 @@ package classes.Scenes.Areas {
 			chance: Encounters.ALWAYS,
 			call: riftAprilFools
 
-		},name: "kairos",
+		}, {
+			name: "kairos",
 			when: function ():Boolean {
 				return player.level >= 20 && !kairos.hasMet();
 			},
@@ -57,7 +58,7 @@ package classes.Scenes.Areas {
 			},
 			chance: Encounters.ALWAYS,
 			call: kairos.hub
-		}, { {
+		}, {
 			name: "valkyrie",
 			chance: 1,
 			call: valkyrieEncounter
