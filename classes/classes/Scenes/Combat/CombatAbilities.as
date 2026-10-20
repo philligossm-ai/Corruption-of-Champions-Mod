@@ -269,7 +269,22 @@ package classes.Scenes.Combat
 			return damage;
 		}
 
-		public function spellWhitefire(targetSelected:Boolean = false, monsterTarget:Monster = null):void {
+		//(60) Time Stop – folds the next few seconds into one frozen moment. The enemy loses their turns.
+public function spellTimeStop():void {
+	clearOutput();
+	if (isExhausted(60, 1)) return;
+	doNext(combat.combatMenu);
+	if (player.hasStatusEffect(StatusEffects.TimeStop)) {
+		player.addStatusValue(StatusEffects.TimeStop, 1, 3);
+		outputText("You reach into the frozen second again and <b>widen</b> it. The stillness stretches, the air thickening to glass. You now hold <b>" + player.statusEffectv1(StatusEffects.TimeStop) + "</b> stolen turns.\n\n");
+	} else {
+		player.createStatusEffect(StatusEffects.TimeStop, 3, 0, 0, 0);
+		outputText("You draw a slow breath and <b>pull</b>. The world stops. Dust hangs in the air, " + monster.capitalA + monster.short + " is frozen mid-lunge, even your own heartbeat is suspended. You are the only thing still moving.\n\n");
+	}
+	flags[kFLAGS.SPELLS_CAST]++;
+	spellPerkUnlock();
+	getGame().combat.enemyTurn();
+}public function spellWhitefire(targetSelected:Boolean = false, monsterTarget:Monster = null):void {
 			if (combat.targetSelectionNeeded(targetSelected, monsterTarget, spellWhitefire)) return;
 			clearOutput();
 			if (isExhausted(30, 1)) return;
