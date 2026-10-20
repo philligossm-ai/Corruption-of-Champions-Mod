@@ -21,6 +21,7 @@ package classes.Scenes.Areas {
 		public var yetiScene:YetiScene = new YetiScene();
 		public var giantScene:FrostGiantScene = new FrostGiantScene();
 		public var amarokScene:AmarokScene = new AmarokScene();
+		public var kairos:Kairos = new Kairos();
 
 		public function GlacialRift() {}
 
@@ -42,7 +43,21 @@ package classes.Scenes.Areas {
 			},
 			chance: Encounters.ALWAYS,
 			call: riftAprilFools
+
+		},name: "kairos",
+			when: function ():Boolean {
+				return player.level >= 20 && !kairos.hasMet();
+			},
+			chance: Encounters.ALWAYS,
+			call: kairos.firstMeeting
 		}, {
+			name: "kairosreturn",
+			when: function ():Boolean {
+				return kairos.hasMet() && ((kairos.trialsPassed() < 3 && kairos.inTrial() == 0) || kairos.isReadyToTeach());
+			},
+			chance: Encounters.ALWAYS,
+			call: kairos.hub
+		}, { {
 			name: "valkyrie",
 			chance: 1,
 			call: valkyrieEncounter
