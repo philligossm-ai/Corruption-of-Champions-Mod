@@ -132,6 +132,7 @@ package classes.Scenes {
 			learnSpell(StatusEffects.KnowsBlind, "Blind");
 			learnSpell(StatusEffects.KnowsWhitefire, "Whitefire");
 			learnSpell(StatusEffects.KnowsBlackfire, "Blackfire");
+			player.createStatusEffect(StatusEffects.KnowsTimeStop, 0, 0, 0, 0);
 			outputText("\nYou now know <b>" + player.spellCount() + "</b> spells.");
 			doNext(accessCheatMenu);
 		}
