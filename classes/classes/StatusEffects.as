@@ -87,7 +87,8 @@ import classes.StatusEffects.CombatStatusEffect;
 		public static const KnowsHeal:StatusEffectType = mk("Knows Heal");
 		public static const KnowsMight:StatusEffectType = mk("Knows Might");
 		public static const KnowsWhitefire:StatusEffectType = mk("Knows Whitefire");
-		public static const KnowsBlackfire:StatusEffectType = mk("Knows Blackfire");	
+		public static const KnowsBlackfire:StatusEffectType = mk("Knows Blackfire");
+		public static const KairosTrials:StatusEffectType = mk("Kairos Trials"); //v1 = trials passed; v2 = trial in progress; v3 = day of last attempt; v4 = has met	
 		public static const KnowsTimeStop:StatusEffectType = mk("Knows Time Stop");
 		public static const TimeStop:StatusEffectType = mk("Time Stop"); //v1 = stolen turns remaining
 		public static const LactationEndurance:StatusEffectType = mk("Lactation Endurance");
