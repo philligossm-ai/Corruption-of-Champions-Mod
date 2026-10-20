@@ -131,7 +131,8 @@ package classes.Scenes.Combat
 			// JOJO ABILITIES -- kind makes sense to stuff it in here along side the white magic shit (also because it can't fit into M. Specials :|
 			if (player.findPerk(PerkLib.CleansingPalm) >= 0 && player.isPureEnough(10)) {
 				addButton(3, "C.Palm", spellCleansingPalm).hint("Unleash the power of your cleansing aura! More effective against corrupted opponents. Doesn't work on the pure.  \n\nFatigue Cost: " + player.spellCost(30) + "", "Cleansing Palm");
-			}
+			}if (player.hasStatusEffect(StatusEffects.KnowsTimeStop))
+		addButton(4, "TimeStop", spellTimeStop).hint("Time Stop seizes the next few seconds and holds them still. While it holds, your enemies do not get to act at all — every turn is yours.  \n\nFatigue Cost: " + player.spellCost(60) + "", "Time Stop");
 			addButton(14, "Back", combat.combatMenu, false);
 		}
 		
