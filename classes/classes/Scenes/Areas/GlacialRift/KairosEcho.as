@@ -36,8 +36,8 @@ package classes.Scenes.Areas.GlacialRift {
 			else echoSteal();
 		}
 
-		override public function defeated(hpVictory:Boolean):void { getGame().glacialRift.kairos.trialEchoWon(); }
-		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void { getGame().glacialRift.kairos.trialEchoLost(); }
+		override public function defeated(hpVictory:Boolean):void { game().glacialRift.kairos.trialEchoWon(); }
+		override public function won(hpVictory:Boolean, pcCameWorms:Boolean):void { game().glacialRift.kairos.trialEchoLost(); }
 
 		public function KairosEcho() {
 			this.a = "the ";
