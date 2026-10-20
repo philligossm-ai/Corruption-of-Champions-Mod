@@ -428,7 +428,7 @@ package classes.Scenes.Combat
 			if (player.statusEffectv1(StatusEffects.TimeStop) > 0) {
 				clearOutput();
 				outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.\n\n");
-				doNext(combatMenu, false);
+				doNext(curry(combatMenu, false));
 				return;
 			}
 			player.removeStatusEffect(StatusEffects.TimeStop);
