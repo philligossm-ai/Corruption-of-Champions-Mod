@@ -15,7 +15,9 @@ package classes.Scenes.Camp
 	 */
 	public class CabinProgress extends BaseContent {
 		
-		public function CabinProgress() {}
+		public var cabinProgress:CabinProgress = new CabinProgress();
+	public var codex:Codex = new Codex();
+	public var cheatMenu:CheatMenu = new CheatMenu();
 		
 		//------------
 		// VALUES
