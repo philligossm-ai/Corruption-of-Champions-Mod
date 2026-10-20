@@ -92,7 +92,7 @@ package classes.Scenes {
 		private function statsMenu():void {
 			clearOutput();
 			outputText("Strength <b>" + player.str + "</b>  |  Toughness <b>" + player.tou + "</b>  |  Speed <b>" + player.spe + "</b>  |  Intelligence <b>" + player.inte + "</b>\n\n");
-			outputText("Libido <b>" + player.lib + "</b>  |  Sensitivity <b>" + player.sen + "</b>\n\n");
+			outputText("Libido <b>" + player.lib + "</b>  |  Sensitivity <b>" + player.sens + "</b>\n\n");
 			menu();
 			addButton(0, "Str", statPick, "str");
 			addButton(1, "Tou", statPick, "tou");
