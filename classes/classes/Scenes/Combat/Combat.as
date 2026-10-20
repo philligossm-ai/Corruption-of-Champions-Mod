@@ -184,9 +184,7 @@ package classes.Scenes.Combat
 				if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0) {
 					flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
 					outputText("At the same time, you open the chamber of your pistol to reload the ammunition.  This takes up a turn.\n\n");
-					public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+					enemyTurn();
 					return;
 				}
 				else {
@@ -205,9 +203,7 @@ package classes.Scenes.Combat
 				attack();
 				return;
 			}
-			public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+			enemyTurn();
 			return;
 		}
 
@@ -426,9 +422,7 @@ package classes.Scenes.Combat
 			return monster; //Fallback
 		}
 		
-		public function public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); }:void {
+		public function enemyTurn():void {
 			if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI();
 			if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI();
 			if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI();
@@ -519,17 +513,13 @@ package classes.Scenes.Combat
 				outputText("You sigh and relax in the chains, eying the well-endowed minotaur as you await whatever rough treatment he desires to give.  His musky, utterly male scent wafts your way on the wind, and you feel droplets of your lust dripping down your thighs.  You lick your lips as you watch the pre-cum drip from his balls, eager to get down there and worship them.  Why did you ever try to struggle against this fate?\n\n");
 				var lustDmg:int = 30 + rand(5);
 				player.takeLustDamage(lustDmg, true, false);
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else if (player.hasStatusEffect(StatusEffects.Whispered)) {
 				clearOutput();
 				outputText("You shake off the mental compulsions and ready yourself to fight!\n\n");
 				player.removeStatusEffect(StatusEffects.Whispered);
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else if (player.hasStatusEffect(StatusEffects.HarpyBind)) {
 				clearOutput();
@@ -591,40 +581,30 @@ package classes.Scenes.Combat
 				clearOutput();
 				outputText("You wobble about for some time but manage to recover. Isabella capitalizes on your wasted time to act again.\n\n");
 				player.removeStatusEffect(StatusEffects.IsabellaStunned);
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else if (player.hasStatusEffect(StatusEffects.Stunned)) {
 				clearOutput();
 				outputText("You wobble about, stunned for a moment.  After shaking your head, you clear the stars from your vision, but by then you've squandered your chance to act.\n\n");
 				player.removeStatusEffect(StatusEffects.Stunned);
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else if (player.hasStatusEffect(StatusEffects.Confusion)) {
 				clearOutput();
 				outputText("You shake your head and file your memories in the past, where they belong.  It's time to fight!\n\n");
 				player.removeStatusEffect(StatusEffects.Confusion);
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else if (monster is Doppelganger) {
 				clearOutput();
 				outputText("You decide not to take any action this round.\n\n");
 				(monster as Doppelganger).handlePlayerWait();
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else {
 				clearOutput();
 				outputText("You decide not to take any action this round.\n\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 		}
 
@@ -640,9 +620,7 @@ package classes.Scenes.Combat
 				//Struggle Free Fail*
 				else {
 					outputText("You wiggle and struggle with all your might, but the chains remain stubbornly tight, binding you in place.  Damnit!  You can't lose like this!\n\n");
-					public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+					enemyTurn();
 				}
 			}
 			else if (monster.hasStatusEffect(StatusEffects.PCTailTangle)) {
@@ -678,9 +656,7 @@ package classes.Scenes.Combat
 				clearOutput();
 				outputText("You claw your way out of the webbing while Kiha does her best to handle the spiders single-handedly!\n\n");
 				player.removeStatusEffect(StatusEffects.UBERWEB);
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else if (player.hasStatusEffect(StatusEffects.NagaBind)) {
 				clearOutput();
@@ -707,9 +683,7 @@ package classes.Scenes.Combat
 					outputText("As the creature attempts to adjust your position in its grip, you free one of your " + player.legs() + " and hit the beast in its beak, causing it to let out an inhuman cry and drop you to the ground smartly.\n\n");
 					player.removeStatusEffect(StatusEffects.TentacleBind);
 					monster.createStatusEffect(StatusEffects.TentacleCoolDown, 3, 0, 0, 0);
-					public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+					enemyTurn();
 				}
 				//Fail to break free
 				else {
@@ -740,9 +714,7 @@ package classes.Scenes.Combat
 				lustDmg = 10 + rand(player.lib / 5 + player.cor / 8);
 				player.takeLustDamage(lustDmg, true, false);
 				(monster as FrostGiant).giantBoulderFantasize();
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			if (player.armorName == "goo armor") {
@@ -784,9 +756,7 @@ package classes.Scenes.Combat
 					return;
 				}
 			}
-			public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };	
+			enemyTurn();	
 		}
 
 
@@ -804,23 +774,17 @@ package classes.Scenes.Combat
 			}
 			if (player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 0 && !isWieldingRangedWeapon()) {
 				outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  The kitsune's seals have made normal attack impossible!  Maybe you could try something else?\n\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			if ((flags[kFLAGS.PC_FETISH] >= 3 && (rand(3) > 0 || monster is Ceraph)) && !getGame().urtaQuest.isUrta() && !isWieldingRangedWeapon()) {
 				outputText("You attempt to attack, but at the last moment your body wrenches away, preventing you from even coming close to landing a blow!  Ceraph's piercings have made normal attack impossible!  Maybe you could try something else?\n\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			if (player.hasStatusEffect(StatusEffects.TaintedMind) && !isWieldingRangedWeapon()) {
 				(monsterTarget as DriderIncubus).taintedMindAttackAttempt();
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			flags[kFLAGS.LAST_ATTACK_TYPE] = 0;
@@ -829,9 +793,7 @@ package classes.Scenes.Combat
 				if (flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] <= 0) {
 					flags[kFLAGS.FLINTLOCK_PISTOL_AMMO] = 4;
 					outputText("You open the chamber of your pistol to reload the ammunition. This takes up a turn.\n\n");
-					public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+					enemyTurn();
 					return;
 				}
 				else flags[kFLAGS.FLINTLOCK_PISTOL_AMMO]--;
@@ -839,9 +801,7 @@ package classes.Scenes.Combat
 			//Amily!
 			if (monsterTarget.hasStatusEffect(StatusEffects.Concentration) && !isWieldingRangedWeapon()) {
 				outputText("Amily easily glides around your attack thanks to her complete concentration on your movements.\n\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			if (monsterTarget.hasStatusEffect(StatusEffects.Level) && !player.hasStatusEffect(StatusEffects.FirstAttack) && !isWieldingRangedWeapon()) {
@@ -891,9 +851,7 @@ package classes.Scenes.Combat
 			}
 			if (monsterTarget is FrostGiant && player.hasStatusEffect(StatusEffects.GiantBoulder)) {
 				(monsterTarget as FrostGiant).giantBoulderHit(0);
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			//Worms are special
@@ -917,9 +875,7 @@ package classes.Scenes.Combat
 					attack(true, monsterTarget);
 					return;
 				}
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			
@@ -952,9 +908,7 @@ package classes.Scenes.Combat
 					}
 					else outputText("\n");
 				}
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			//BLOCKED ATTACK:
@@ -965,9 +919,7 @@ package classes.Scenes.Combat
 					return;
 				}
 				else outputText("\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			//------------
@@ -1041,9 +993,7 @@ package classes.Scenes.Combat
 								attack(true, monsterTarget);
 								return;
 							}
-							public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+							enemyTurn();
 						}
 						else {
 							if (monster.HP <= 0) doNext(endHpVictory);
@@ -1226,9 +1176,7 @@ package classes.Scenes.Combat
 					return;
 				}
 				outputText("\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 			}
 			else {
 				if (monster.HP <= 0) doNext(endHpVictory);
@@ -2147,7 +2095,7 @@ package classes.Scenes.Combat
 					if (monster.statusEffectv1(StatusEffects.NagaVenom) <= 1) {
 						outputText("You notice " + monster.pronoun1 + " are beginning to show signs of weakening, but there still appears to be plenty of fight left in " + monster.pronoun2 + ".  ");
 					}
-		    	    else {
+		    	    else {
 						outputText("You notice " + monster.pronoun1 + " are obviously affected by your venom, " + monster.pronoun3 + " movements become unsure, and " + monster.pronoun3 + " balance begins to fade. Sweat begins to roll on " + monster.pronoun3 + " skin. You wager " + monster.pronoun1 + " are probably beginning to regret provoking you.  ");
 					}
 				}
@@ -2156,7 +2104,7 @@ package classes.Scenes.Combat
 					if (monster.statusEffectv1(StatusEffects.NagaVenom) <= 1) {
 						outputText("You notice " + monster.pronoun1 + " is beginning to show signs of weakening, but there still appears to be plenty of fight left in " + monster.pronoun2 + ".  ");
 					}
-		    	    else {
+		    	    else {
 						outputText("You notice " + monster.pronoun1 + " is obviously affected by your venom, " + monster.pronoun3 + " movements become unsure, and " + monster.pronoun3 + " balance begins to fade. Sweat is beginning to roll on " + monster.pronoun3 + " skin. You wager " + monster.pronoun1 + " is probably beginning to regret provoking you.  ");
 					}
 				}
@@ -2346,9 +2294,7 @@ package classes.Scenes.Combat
 			if (inCombat && player.hasStatusEffect(StatusEffects.Sealed) && player.statusEffectv2(StatusEffects.Sealed) == 4 && !debug) {
 				clearOutput();
 				outputText("You try to run, but you just can't seem to escape.  <b>Your ability to run was sealed, and now you've wasted a chance to attack!</b>\n\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			//Rut doesnt let you run from dicks.
@@ -2411,9 +2357,7 @@ package classes.Scenes.Combat
 			}
 			if (inDungeon || inRoomedDungeon) {
 				outputText("You're trapped in your foe's home turf - there is nowhere to run!\n\n");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			if (prison.inPrison && !prison.prisonCanEscapeRun()) {
@@ -2426,9 +2370,7 @@ package classes.Scenes.Combat
 				if (!player.canFly()) outputText("You may not be able to swim fast enough. ");
 				else outputText("You grit your teeth with effort as you try to fly away but the tentacles suddenly grab your " + player.legs() + " and pull you down. ");
 				outputText("It looks like you cannot escape. ");
-				public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+				enemyTurn();
 				return;
 			}
 			if (monster.short == "Ember") {
@@ -2455,9 +2397,7 @@ package classes.Scenes.Combat
 				else if (player.hasStatusEffect(StatusEffects.NoFlee)) {
 					if (monster.short == "goblin") outputText("You try to flee but get stuck in the sticky white goop surrounding you.\n\n");
 					else outputText("You put all your skills at running to work and make a supreme effort to escape, but are unable to get away!\n\n");
-					public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+					enemyTurn();
 					return;
 				}
 				//Nonstuck!
@@ -2528,9 +2468,7 @@ package classes.Scenes.Combat
 						combatRoundOver();
 					} else {
 						outputText("You quickly bolt out from the creature, but the creature wraps its tentacles around your leg, preventing your escape.\n\n");
-						public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+						enemyTurn();
 					}
 				}
 				return;
@@ -2550,9 +2488,7 @@ package classes.Scenes.Combat
 				//Fail: 
 				else {
 					outputText("Despite some impressive jinking, " + getGame().emberScene.emberMF("he", "she") + " catches you, tackling you to the ground.\n\n");
-					public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+					enemyTurn();
 				}
 				return;
 			}
@@ -2655,9 +2591,7 @@ package classes.Scenes.Combat
 				}
 			}
 			outputText("\n\n");
-			public function enemyTurn():void { 	//Time Stop: while the frozen moment holds, the enemy simply does not act. 	if (player.hasStatusEffect(StatusEffects.TimeStop)) { 		player.addStatusValue(StatusEffects.TimeStop, 1, -1); 		if (player.statusEffectv1(StatusEffects.TimeStop) > 0) { 			clearOutput(); 			outputText("<b>Time holds.</b> " + monster.capitalA + monster.short + " hangs motionless in the air, caught mid-swing. <b>" + num2Text(player.statusEffectv1(StatusEffects.TimeStop)) + "</b> stolen turns remain.
-
-"); 			doNext(combatMenu, false); 			return; 		} 		player.removeStatusEffect(StatusEffects.TimeStop); 	} 	if (monster.HP > 0 && monster.lust < monster.maxLust()) monster.doAI(); 	if (monster2 != null && monster2.HP > 0 && monster2.lust < monster2.maxLust()) monster2.doAI(); 	if (monster3 != null && monster3.HP > 0 && monster3.lust < monster3.maxLust()) monster3.doAI(); 	if (monster4 != null && monster4.HP > 0 && monster4.lust < monster4.maxLust()) monster4.doAI(); };
+			enemyTurn();
 		}
 		
 	}
